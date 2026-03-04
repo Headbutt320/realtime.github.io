@@ -47,7 +47,7 @@
         const today = new Date();
 
         // Format the date (e.g., March 3, 2026)
-        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
         const formattedDate = today.toLocaleDateString(undefined, options);
 
         // Inject into HTML
