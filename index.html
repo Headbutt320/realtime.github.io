@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Time Display</title>
+    <style>
+        @font-face{
+          font-family: "Clash_Bold";
+          src: url(Clash_Bold.otf) format("opentype");
+        }
+        body {
+            font-family: "Clash_Bold", serif; /* Change to your installed font name */
+            text-align: center;
+            margin-top: 20%;
+            background: url("clash_background.webp") no-repeat center center fixed; /* Local image */
+            background-size: cover; /* Make image fill the screen */
+            color: white; /* Text color for visibility */
+        }
+        #time {
+            font-size: 150px;
+            color: rgb(147, 89, 89);
+            /* Removed background box, padding, and shadow */
+
+            /* Sharp outline for WebKit browsers (Chrome, Safari, Edge) */
+    -webkit-text-stroke: 4px black;
+    -webkit-text-fill-color: rgb(123, 191, 225);
+
+        }
+        h1 {
+          font-size: 50px;
+          color: rgb(179, 164, 164);
+
+          /* Sharp outline for WebKit browsers (Chrome, Safari, Edge) */
+    -webkit-text-stroke: 2px black;
+    -webkit-text-fill-color: rgb(179, 164, 164);
+
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Current Time</h1>
+    <div id="time">Loading...</div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            hours = hours % 12 || 12;
+            hours = String(hours).padStart(2, '0');
+            minutes = String(minutes).padStart(2, '0');
+            seconds = String(seconds).padStart(2, '0');
+
+            document.getElementById('time').textContent = 
+                `${hours}:${minutes}:${seconds} ${ampm}`;
+        }
+
+        setInterval(updateTime, 1000);
+        updateTime();
+    </script>
+
+</body>
+</html>
