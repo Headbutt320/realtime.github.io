@@ -27,7 +27,7 @@
     -webkit-text-fill-color: rgb(123, 191, 225);
 
         }
-        h1 {
+        #date {
           font-size: 50px;
           color: rgb(179, 164, 164);
 
@@ -39,8 +39,25 @@
     </style>
 </head>
 <body>
+    <div id="date">Loading...</div>
 
-    <h1>Current Time</h1>
+    <script>
+      try {
+        // Create a new Date object
+        const today = new Date();
+
+        // Format the date (e.g., March 3, 2026)
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        const formattedDate = today.toLocaleDateString(undefined, options);
+
+        // Inject into HTML
+        document.getElementById("date").textContent = formattedDate;
+    } catch (error) {
+        console.error("Error getting date:", error);
+        document.getElementById("date").textContent = "Unable to load date.";
+    }
+    </script>
+
     <div id="time">Loading...</div>
 
     <script>
